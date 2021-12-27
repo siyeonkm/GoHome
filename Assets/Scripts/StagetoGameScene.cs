@@ -9,7 +9,7 @@ public class StagetoGameScene : MonoBehaviour
     public GameObject stageNumObject;
 
     // Start is called before the first frame update
-    public void SceneChange()
+    public void call()
     {
         SceneManager.LoadScene("GameScene");
         DontDestroyOnLoad(stageNumObject);

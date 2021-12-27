@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class StageManager : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
     public StagetoGameScene sc;
 
@@ -19,6 +19,6 @@ public class StageManager : MonoBehaviour
             sc.stageNum = 3;
         
         if (sc.stageNum != 0)
-            sc.SceneChange();
+            sc.call();
     }
 }
