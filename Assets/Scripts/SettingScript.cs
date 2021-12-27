@@ -9,6 +9,9 @@ public class SettingScript : MonoBehaviour
     public GameObject settingImg;
     public static int bgmOnOff = 1;
 
+    GameObject BackgroundMusic;
+    AudioSource backmusic;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,14 +29,12 @@ public class SettingScript : MonoBehaviour
         settingImg.SetActive(true);
     }
 
-    public void OnClickBGMOn()
+    public void OnClickBGM()
     {
-        bgmOnOff = 1;
-    }
-
-    public void OnClickBGMOff()
-    {
-        bgmOnOff = 0;
+        BackgroundMusic = GameObject.Find("BgmManager");
+        backmusic = BackgroundMusic.GetComponent<AudioSource>();
+        if (backmusic.isPlaying) backmusic.Pause();
+        else backmusic.Play();
     }
 
     public void OnClickStage()
