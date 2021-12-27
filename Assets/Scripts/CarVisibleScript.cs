@@ -43,6 +43,11 @@ public class CarVisibleScript : MonoBehaviour
             car_list[0].SetActive(false);
             Invoke("gameClear", 0.5f);
         }
+        if (RestartScript.restart_num == 1)
+        {
+            changePosition(stage);
+            RestartScript.restart_num = 0;
+        }
     }
 
     public void gameClear()

@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class SettingScript : MonoBehaviour
 {
-    public Image settingImg;
+    public GameObject settingImg;
     public static int bgmOnOff = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        settingImg.gameObject.SetActive(false);
+        settingImg.SetActive(false);
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class SettingScript : MonoBehaviour
 
     public void OnClickSetting() //일시정지
     {
-        settingImg.gameObject.SetActive(true);
+        settingImg.SetActive(true);
     }
 
     public void OnClickBGMOn()
@@ -43,7 +43,7 @@ public class SettingScript : MonoBehaviour
 
     public void OnClickGameContinue() //이어하기
     {
-        settingImg.gameObject.SetActive(false);
+        settingImg.SetActive(false);
     }
 
     public void OnClickOver() //이어하기
