@@ -19,6 +19,8 @@ public class CarVisibleScript : MonoBehaviour
 
     private static int line = 15;
 
+    public static string drag_item = "";
+
     void Awake()
     {
     }
@@ -120,5 +122,10 @@ public class CarVisibleScript : MonoBehaviour
             car_list[12].SetActive(true);
             car_list[15].SetActive(true);
         }
+    }
+
+    public static void changeDragItem(string name)
+    {
+        drag_item = name;
     }
 }

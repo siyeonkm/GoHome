@@ -232,10 +232,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &13518689
@@ -375,10 +375,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &48476558
@@ -480,9 +480,9 @@ MonoBehaviour:
   - {fileID: 1034721146}
   - {fileID: 369287159}
   - {fileID: 354046283}
+  - {fileID: 1328179731}
   - {fileID: 241658419}
   - {fileID: 650713428}
-  - {fileID: 1328179731}
   - {fileID: 1305460313}
   - {fileID: 13518683}
   - {fileID: 1630272766}
@@ -639,10 +639,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &241658425
@@ -782,10 +782,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &354046289
@@ -925,10 +925,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &363813039
@@ -1068,10 +1068,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &369287165
@@ -1408,10 +1408,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &650713434
@@ -1551,10 +1551,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &691016817
@@ -1879,10 +1879,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &1034721152
@@ -2264,10 +2264,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &1305460319
@@ -2622,10 +2622,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &1328179737
@@ -2693,6 +2693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1509249214}
+  - component: {fileID: 1509249215}
   m_Layer: 0
   m_Name: GameData
   m_TagString: Untagged
@@ -2714,6 +2715,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1509249215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509249213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62fa3a3bd8308194cb15e83abd94dc32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drag_item: 
 --- !u!1 &1521364958
 GameObject:
   m_ObjectHideFlags: 0
@@ -2855,10 +2869,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &1630272772
@@ -3064,10 +3078,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &1728551147
@@ -3207,10 +3221,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &1833532758
@@ -3350,10 +3364,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &1857246486
@@ -3651,10 +3665,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionExist: 0
-  dragging: 0
   cnt: 0
   colName: 
   direction: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
   CurrentPos: {x: 0, y: 0}
   PrevPos: {x: 0, y: 0}
 --- !u!61 &2095947420

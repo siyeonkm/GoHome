@@ -57,6 +57,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CarMoveScript.cs" />
      <Compile Include="Assets\Scripts\CarVisibleScript.cs" />
+     <Compile Include="Assets\Scripts\GameDataScript.cs" />
  <Reference Include="UnityEngine">
  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
