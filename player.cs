@@ -11,9 +11,12 @@ public class player : MonoBehaviour
     float v;
     bool isHorizonMove;
     Vector3 pos;
+    public GameObject Clear;  //클리어 팝업창
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        Clear.SetActive(false); //클리어 팝업창 안보이게
     }
 
     void Update()
@@ -40,11 +43,12 @@ public class player : MonoBehaviour
         rigid.velocity = moveVec * maxSpeed;
         pos = rigid.position;
 
-        // exit 선이 x=1 선에 있다고 가정
-        if (pos.x>1)  
+        // exit 선이 x=180 선에 있다고 가정
+        if (pos.x>180)  
         {
             Time.timeScale = 0; //시간 멈춤
             Debug.Log("탈출 성공");
+            Clear.SetActive(true); //클리어 팝업창 띄움
         }
         
       
@@ -56,7 +60,7 @@ public class player : MonoBehaviour
       //  if (collision.GameObject.tag == "Finish")
        // {
         //    Time.timeScale = 0; //멈춤
-       //     Debug.Log("탈출 성공");
+       //     Debug.Log("게임 클리어");
 
       //  }
     }
