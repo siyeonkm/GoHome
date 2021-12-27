@@ -30,8 +30,8 @@ public class CarVisibleScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        changeVisibility(stage);
-        changePosition(stage);
+        changeVisibility(StageScript.stage);
+        changePosition(StageScript.stage);
         clearImg.gameObject.SetActive(false);
     }
 
@@ -53,6 +53,7 @@ public class CarVisibleScript : MonoBehaviour
     public void gameClear()
     {
         clearImg.gameObject.SetActive(true);
+        if (StageScript.stage == StageScript.currStage) StageScript.stage++;
         Invoke("StageLoad", 3.0f);
     }
 
@@ -133,17 +134,85 @@ public class CarVisibleScript : MonoBehaviour
         }
         else if (stage == 2)
         {
-            
+            car_list[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(c_startX + oneStep + line*(float)0.5, c_startY - (oneStep * 2) - line);
+            car_list[0].transform.rotation = Quaternion.Euler(0, 0, 90);
+
+            car_list[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(c_startX, c_startY);
+            car_list[1].transform.rotation = Quaternion.Euler(0, 0, 90);
+
+            car_list[2].GetComponent<RectTransform>().anchoredPosition = new Vector2(-(c_startY) + (oneStep*2) + line, -(c_startX));
+            car_list[2].transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            car_list[3].GetComponent<RectTransform>().anchoredPosition = new Vector2(c_startX + (oneStep * 4) + line * 2, c_startY);
+            car_list[3].transform.rotation = Quaternion.Euler(0, 0, 90);
+
+            car_list[4].GetComponent<RectTransform>().anchoredPosition = new Vector2(c_startX, c_startY - oneStep - line * (float)0.5);
+            car_list[4].transform.rotation = Quaternion.Euler(0, 0, 90);
+
+            car_list[5].GetComponent<RectTransform>().anchoredPosition = new Vector2(-(c_startY) + (oneStep * 4) + line * 2, -(c_startX) - (oneStep * 2) - line * 1);
+            car_list[5].transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            car_list[6].GetComponent<RectTransform>().anchoredPosition = new Vector2(-(c_startY) + oneStep + line * (float)0.5, -(c_startX) - (oneStep * 4) - line * 2);
+            car_list[6].transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            car_list[7].GetComponent<RectTransform>().anchoredPosition = new Vector2(c_startX + (oneStep * 4) + line * 2, c_startY - (oneStep * 5) - line * (float)2.5);
+            car_list[7].transform.rotation = Quaternion.Euler(0, 0, 90);
+
+            car_list[8].GetComponent<RectTransform>().anchoredPosition = new Vector2(-(c_startY) + oneStep*3 + line*(float)1.5, -(c_startX) - (oneStep * 4) - line * 2);
+            car_list[8].transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            car_list[9].GetComponent<RectTransform>().anchoredPosition = new Vector2(c_startX + (oneStep * 4) + line * 2, c_startY - (oneStep * 4) - line * 2);
+            car_list[9].transform.rotation = Quaternion.Euler(0, 0, 90);
+
+            car_list[12].GetComponent<RectTransform>().anchoredPosition = new Vector2(-(t_startY), -(t_startX) - oneStep*2 - line);
+            car_list[12].transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            car_list[14].GetComponent<RectTransform>().anchoredPosition = new Vector2(t_startX + (oneStep * 1) + line * (float)0.5, t_startY - oneStep*3 - line*(float)1.5);
+            car_list[14].transform.rotation = Quaternion.Euler(0, 0, 90);
+
+            car_list[15].GetComponent<RectTransform>().anchoredPosition = new Vector2(-(t_startY) + (oneStep * 5) + line * (float)2.5, -(t_startX)-oneStep- line * (float)0.5);
+            car_list[15].transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else
         {
-            for (int i = 0; i <= 10; i++)
-            {
-                car_list[i].SetActive(true);
-            }
+            car_list[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(c_startX + oneStep*2 + line, c_startY - (oneStep * 2) - line);
+            car_list[0].transform.rotation = Quaternion.Euler(0, 0, 90);
 
-            car_list[12].SetActive(true);
-            car_list[15].SetActive(true);
+            car_list[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(-(c_startY), -(c_startX));
+            car_list[1].transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            car_list[2].GetComponent<RectTransform>().anchoredPosition = new Vector2(c_startX + (oneStep * 1) + line*(float)0.5, c_startY);
+            car_list[2].transform.rotation = Quaternion.Euler(0, 0, 90);
+
+            car_list[3].GetComponent<RectTransform>().anchoredPosition = new Vector2(-(c_startY)+oneStep*3 + line*(float)1.5, -(c_startX));
+            car_list[3].transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            car_list[4].GetComponent<RectTransform>().anchoredPosition = new Vector2(-(c_startY)+oneStep + line*(float)0.5, -(c_startX) - oneStep - line * (float)0.5);
+            car_list[4].transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            car_list[5].GetComponent<RectTransform>().anchoredPosition = new Vector2(-(c_startY) + (oneStep * 4) + line * 2, -(c_startX) - (oneStep * 2) - line * 1);
+            car_list[5].transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            car_list[6].GetComponent<RectTransform>().anchoredPosition = new Vector2(c_startX, c_startY - (oneStep * 3) - line * (float)1.5);
+            car_list[6].transform.rotation = Quaternion.Euler(0, 0, 90);
+
+            car_list[7].GetComponent<RectTransform>().anchoredPosition = new Vector2(c_startX, c_startY - (oneStep * 5) - line * (float)2.5);
+            car_list[7].transform.rotation = Quaternion.Euler(0, 0, 90);
+
+            car_list[8].GetComponent<RectTransform>().anchoredPosition = new Vector2(-(c_startY) + oneStep * 3 + line * (float)1.5, -(c_startX) - (oneStep * 3) - line *(float)1.5);
+            car_list[8].transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            car_list[9].GetComponent<RectTransform>().anchoredPosition = new Vector2(c_startX + (oneStep * 4) + line * 2, c_startY - (oneStep * 4) - line * 2);
+            car_list[9].transform.rotation = Quaternion.Euler(0, 0, 90);
+
+            car_list[10].GetComponent<RectTransform>().anchoredPosition = new Vector2(c_startX + (oneStep * 3) + line *(float)1.5, c_startY - (oneStep * 5) - line *(float)2.5);
+            car_list[10].transform.rotation = Quaternion.Euler(0, 0, 90);
+
+            car_list[12].GetComponent<RectTransform>().anchoredPosition = new Vector2(-(t_startY) + (oneStep * 2) + line, -(t_startX) - oneStep * 3 - line * (float)1.5);
+            car_list[12].transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            car_list[15].GetComponent<RectTransform>().anchoredPosition = new Vector2(-(t_startY) + (oneStep * 5) + line * (float)2.5, -(t_startX));
+            car_list[15].transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 

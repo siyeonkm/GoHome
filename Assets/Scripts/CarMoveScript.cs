@@ -105,7 +105,7 @@ public class CarMoveScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         {
             Vector2 pos = this.GetComponent<RectTransform>().anchoredPosition;
             if (dir.y > 0 && pos.y + 126 < -124) this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x, pos.y + 126 + 8);
-            else if (dir.y < 0 && pos.y - 126 > -597) this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x, pos.y - 126 - 8);
+            else if (dir.y < 0 && pos.y - 126 > -655) this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x, pos.y - 126 - 8);
         }
     }
 
