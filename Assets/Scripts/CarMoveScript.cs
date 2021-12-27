@@ -10,10 +10,41 @@ public class CarMoveScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     public static Vector2 DefaultPosLocal;
     public static float RotationPos;
     public bool CollisionExist = false;
+    public bool dragging = false;
+    public int cnt = 0;
+
+    public string colName = "";
+    public Vector3 direction;
+
+    public Vector2 CurrentPos, PrevPos;
 
     void Update()
     {
-        this.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        if (CollisionExist == true && dragging == true)
+        {
+            Debug.LogWarning("충돌");
+            if (direction.x > 0 && RotationPos == 90)
+            {
+                this.transform.position = new Vector3(this.transform.position.x - 1, this.transform.position.y, this.transform.position.z);
+                Invoke("Rest", 2.0f);
+            }
+            else if (direction.x < 0 && RotationPos == 90)
+            {
+                this.transform.position = new Vector3(this.transform.position.x + 1, this.transform.position.y, this.transform.position.z);
+                Invoke("Rest", 2.0f);
+            }
+            else if (direction.y > 0 && RotationPos != 90)
+            {
+                this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 1, this.transform.position.z);
+                Invoke("Rest", 2.0f);
+            }
+            else if (direction.y < 0 && RotationPos != 90)
+            {
+                this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
+                Invoke("Rest", 2.0f);
+            }
+
+        }
     }
     void Start()
     {
@@ -26,17 +57,24 @@ public class CarMoveScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     {
         DefaultPos = this.transform.position;
         DefaultPosLocal = this.GetComponent<RectTransform>().anchoredPosition;
-        RotationPos = this.GetComponent<RectTransform>().eulerAngles.z; ;
+        RotationPos = this.GetComponent<RectTransform>().eulerAngles.z;
+        dragging = true;
         Debug.Log("위치: " + DefaultPos + "    " + "각도: " + RotationPos);
     }
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
         Vector2 currentPos = eventData.position;
-
-        while(CollisionExist == false)
+        cnt++;
+        if(cnt == 3) CurrentPos = eventData.position;
+        if (CollisionExist==true)
         {
-            if (RotationPos == 90.0)
+            this.transform.position = this.transform.position;
+        }
+
+        if(CollisionExist==false)
+        {
+            if (RotationPos == 90)
             {
                 Debug.Log("가로 자동차!!!");
                 Vector3 poss = new Vector3(currentPos.x, this.transform.position.y, this.transform.position.z);
@@ -51,17 +89,35 @@ public class CarMoveScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
                 Debug.Log("현재위치: " + this.transform.position);
             }
         }
+        if (cnt == 1) PrevPos = eventData.position;
     }
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
-        this.transform.position = DefaultPos;
+        this.transform.position = this.transform.position;
+        dragging = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter2D(Collision2D obj)
     {
+        colName = obj.gameObject.name;
+        Debug.Log("이름: " + colName);
+        direction = transform.position - obj.gameObject.transform.position;
+        direction = direction.normalized * 3;
+        Debug.Log("direction :" + direction);
         CollisionExist = true;
     }
 
-   
+    public void OnCollisionExit2D()
+    {
+        CollisionExist = false;
+    }
+
+    public void Rest()
+    {
+        Debug.Log("Rest");
+    }
+
+
+
 }
