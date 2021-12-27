@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CarVisibleScript : MonoBehaviour
 {
 
     public GameObject[] car_list = new GameObject[16];
     public int stage = 1;
+    public Image clearImg;
 
     private static int c_startX = 126;
     private static int c_startY = -60;
@@ -30,12 +32,28 @@ public class CarVisibleScript : MonoBehaviour
     {
         changeVisibility(stage);
         changePosition(stage);
+        clearImg.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(car_list[0].GetComponent<RectTransform>().anchoredPosition.x > 800)
+        {
+            car_list[0].SetActive(false);
+            Invoke("gameClear", 0.5f);
+        }
+    }
+
+    public void gameClear()
+    {
+        clearImg.gameObject.SetActive(true);
+        Invoke("StageLoad", 3.0f);
+    }
+
+    public void StageLoad()
+    {
+        SceneManager.LoadScene("StageScene");
     }
 
     public void changeVisibility(int stage)
