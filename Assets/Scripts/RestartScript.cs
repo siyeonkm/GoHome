@@ -22,6 +22,7 @@ public class RestartScript : MonoBehaviour
     public void OnClickRestart() //일시정지
     {
         restart_num = 1;
+        CarVisibleScript.countnum = 0;
         Count_text.text = "0";
     }
 }

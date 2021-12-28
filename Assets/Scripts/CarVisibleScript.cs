@@ -36,6 +36,7 @@ public class CarVisibleScript : MonoBehaviour
         if (StageScript.currStage == 1) Title.text = "STAGE 1";
         else if (StageScript.currStage == 2) Title.text = "STAGE 2";
         else Title.text = "STAGE 3";
+        countnum = 0;
         changeVisibility(StageScript.currStage);
         changePosition(StageScript.currStage);
         clearImg.gameObject.SetActive(false);
