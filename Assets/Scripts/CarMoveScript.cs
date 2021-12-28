@@ -12,6 +12,8 @@ public class CarMoveScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
     public bool CollisionExist = false;
     public int cnt = 0;
 
+    public Text count;
+
     public string colName = "";
     public Vector3 direction;
 
@@ -29,18 +31,36 @@ public class CarMoveScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
             if (RotationPos == 90 && CarVisibleScript.drag_item == this.name)
             {
                 Vector2 pos = this.GetComponent<RectTransform>().anchoredPosition;
-                if (dir.x > 0) this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x - 126 - 8, pos.y);
-                else this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x + 126 + 8, pos.y);
+                if (dir.x > 0)
+                {
+                    this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x - 126 - 8, pos.y);
+                    CarVisibleScript.countnum--;
+                }
+                else
+                {
+                    this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x + 126 + 8, pos.y);
+                    CarVisibleScript.countnum--;
+                }
             }
             else if (RotationPos != 90 && CarVisibleScript.drag_item == this.name)
             {
                 Vector2 pos = this.GetComponent<RectTransform>().anchoredPosition;
-                if (dir.y > 0) this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x, pos.y - 126 - 8);
-                else this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x, pos.y + 126 + 8);
+                if (dir.y > 0)
+                {
+                    this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x, pos.y - 126 - 8);
+                    CarVisibleScript.countnum--;
+                }
+                else
+                {
+                    this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x, pos.y + 126 + 8);
+                    CarVisibleScript.countnum--;
+                }
             }
             if (CarVisibleScript.drag_item != this.name) this.transform.position = this.transform.position;
+            count.text = CarVisibleScript.countnum.ToString();
             Invoke("Erase", 1.0f);
         }
+        
     }
     void Start()
     {
@@ -97,15 +117,40 @@ public class CarMoveScript : MonoBehaviour, IBeginDragHandler, IEndDragHandler, 
         if(RotationPos == 90)
         {
             Vector2 pos = this.GetComponent<RectTransform>().anchoredPosition;
-            if(dir.x > 0 && pos.y == -327 && pos.x+126 < 796) this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x + 126 + 8, pos.y);
-            else if (dir.x > 0 && pos.x + 126 < 662) this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x + 126 + 8, pos.y);
-            else if(dir.x < 0 && pos.x - 126 > 125) this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x - 126 - 8, pos.y);
+            if (dir.x > 0 && pos.y == -327 && pos.x + 126 < 796)
+            {
+                this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x + 126 + 8, pos.y);
+                CarVisibleScript.countnum++;
+                count.text = CarVisibleScript.countnum.ToString();
+            }
+            else if (dir.x > 0 && pos.x + 126 < 662)
+            {
+                this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x + 126 + 8, pos.y);
+                CarVisibleScript.countnum++;
+                count.text = CarVisibleScript.countnum.ToString();
+            }
+            else if (dir.x < 0 && pos.x - 126 > 125)
+            {
+                this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x - 126 - 8, pos.y);
+                CarVisibleScript.countnum++;
+                count.text = CarVisibleScript.countnum.ToString();
+            }
         }
         else
         {
             Vector2 pos = this.GetComponent<RectTransform>().anchoredPosition;
-            if (dir.y > 0 && pos.y + 126 < -124) this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x, pos.y + 126 + 8);
-            else if (dir.y < 0 && pos.y - 126 > -655) this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x, pos.y - 126 - 8);
+            if (dir.y > 0 && pos.y + 126 < -124)
+            {
+                this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x, pos.y + 126 + 8);
+                CarVisibleScript.countnum++;
+                count.text = CarVisibleScript.countnum.ToString();
+            }
+            else if (dir.y < 0 && pos.y - 126 > -655)
+            {
+                this.GetComponent<RectTransform>().anchoredPosition = new Vector2(pos.x, pos.y - 126 - 8);
+                CarVisibleScript.countnum++;
+                count.text = CarVisibleScript.countnum.ToString();
+            }
         }
     }
 

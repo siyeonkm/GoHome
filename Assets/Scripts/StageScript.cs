@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class StageScript : MonoBehaviour
 {
-    public static int stage = 3;
-    public static int currStage = 1;
+    public static int stage = 1;
+    public static int currStage;
     public void BackSceneBtn()
     {
         SceneManager.LoadScene("StartScene");

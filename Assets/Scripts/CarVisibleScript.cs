@@ -9,7 +9,10 @@ public class CarVisibleScript : MonoBehaviour
 
     public GameObject[] car_list = new GameObject[16];
     public int stage = 1;
+    public static int countnum = 0;
+
     public Image clearImg;
+    public Text Title;
 
     private static int c_startX = 126;
     private static int c_startY = -60;
@@ -30,8 +33,11 @@ public class CarVisibleScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        changeVisibility(StageScript.stage);
-        changePosition(StageScript.stage);
+        if (StageScript.currStage == 1) Title.text = "STAGE 1";
+        else if (StageScript.currStage == 2) Title.text = "STAGE 2";
+        else Title.text = "STAGE 3";
+        changeVisibility(StageScript.currStage);
+        changePosition(StageScript.currStage);
         clearImg.gameObject.SetActive(false);
     }
 
@@ -45,7 +51,7 @@ public class CarVisibleScript : MonoBehaviour
         }
         if (RestartScript.restart_num == 1)
         {
-            changePosition(stage);
+            changePosition(StageScript.currStage);
             RestartScript.restart_num = 0;
         }
     }
@@ -53,7 +59,7 @@ public class CarVisibleScript : MonoBehaviour
     public void gameClear()
     {
         clearImg.gameObject.SetActive(true);
-        if (StageScript.stage == StageScript.currStage) StageScript.stage++;
+        if (StageScript.stage == StageScript.currStage && StageScript.stage<4) StageScript.stage++;
         Invoke("StageLoad", 3.0f);
     }
 
